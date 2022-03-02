@@ -10,7 +10,7 @@ public class CameraControl : MonoBehaviour
 
     float yaw = 0.0f;
     float pitch = 0.0f;
-    float range = 10.0f;
+    public float range = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,7 @@ public class CameraControl : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out target, range)) {
             GameObject obj = target.transform.gameObject;
-            
+
             Debug.Log(obj.name);
             if (obj.tag == "pickup") {
                 obj.transform.SetParent(player);
