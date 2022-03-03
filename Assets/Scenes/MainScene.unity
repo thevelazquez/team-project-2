@@ -849,36 +849,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521721605}
   m_CullTransparentMesh: 1
---- !u!1 &549032698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 549032699}
-  m_Layer: 0
-  m_Name: NavMesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &549032699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549032698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553374874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1243,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8105616010229007608, guid: 13493c3f5821c33469d53359dbe1611d, type: 3}
       propertyPath: m_Name
-      value: Walking
+      value: Guard
       objectReference: {fileID: 0}
     - target: {fileID: 8878633893853077058, guid: 13493c3f5821c33469d53359dbe1611d, type: 3}
       propertyPath: m_RootOrder
@@ -1554,7 +1524,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850544190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.049357, y: -9.004892, z: -2.6691866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1563,7 +1533,7 @@ Transform:
   - {fileID: 1892604981}
   - {fileID: 1869276711}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &873010947
 GameObject:
@@ -2174,7 +2144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1174852085
 MonoBehaviour:
   m_ObjectHideFlags: 0
