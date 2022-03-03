@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5888038406403371062}
   - component: {fileID: 5888038406403371049}
   - component: {fileID: 6309934505177203553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5888038407382964449}
   - component: {fileID: 5888038407382964463}
   - component: {fileID: 5888038407382964462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

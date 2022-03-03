@@ -34,14 +34,30 @@ public class CameraControl : MonoBehaviour
 
     void Interact() {
         RaycastHit target;
-
+        Debug.DrawRay(transform.position, transform.forward*2, Color.white, 5f);
         if (Physics.Raycast(transform.position, transform.forward, out target, range)) {
             GameObject obj = target.transform.gameObject;
 
             Debug.Log(obj.name);
             if (obj.tag == "pickup") {
-                obj.transform.SetParent(player);
-                obj.SetActive(false);
+                if (obj.transform.childCount > 0)
+                {
+                    if (obj.transform.GetChild(0).name == "Gun")
+                    {
+                        Transform gun = obj.transform.GetChild(0).transform;
+                        gun.SetParent(transform);
+                        gun.localPosition = Vector3.zero;
+                        gun.localRotation = Quaternion.identity;
+                        gun.Translate(.4f, 0, .6f);
+                        gun.localRotation = Quaternion.Euler(-10f, 0, 0);
+                        Debug.Log("asd");
+                    }
+                }
+                else
+                {
+                    obj.transform.SetParent(player);
+                    obj.SetActive(false);
+                }
             }  else {
                 Debug.Log("Not a pickup");
             }
