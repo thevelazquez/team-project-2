@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public float speed = 10f;
+    public GuardControl guard;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,16 @@ public class PlayerControl : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         GetComponent<CharacterController>().Move(move * speed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "zone")
+        {
+            if(other.gameObject.GetComponent(typeof(TriggerGuard)) != null)
+            {
+                guard.SetTarget(transform);
+            }
+        }
     }
 }
