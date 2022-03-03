@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5888038406403371051}
   - component: {fileID: 5888038406403371062}
   - component: {fileID: 5888038406403371049}
+  - component: {fileID: 6309934505177203553}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6309934505177203553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5888038406403371050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bd2f8912961ba46a6aea0ed19fe33f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5888038407382964448
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +275,7 @@ MonoBehaviour:
   speedH: 2
   speedV: 2
   player: {fileID: 5888038408071853033}
+  range: 10
 --- !u!1 &5888038408071853035
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d140f1c2f0503964c8bee3c76a57a3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
 --- !u!143 &5888038408071853046
 CharacterController:
   m_ObjectHideFlags: 0

@@ -43,11 +43,14 @@ public class Pause_Menu_UI : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
-
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     public void Pause()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
