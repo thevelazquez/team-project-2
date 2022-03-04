@@ -16,4 +16,9 @@ public class End_Screen_UI : MonoBehaviour
         Debug.Log("Quit Game");
         Application.Quit();
     }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }

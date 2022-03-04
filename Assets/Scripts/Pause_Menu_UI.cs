@@ -11,9 +11,8 @@ public class Pause_Menu_UI : MonoBehaviour
     public GameObject controlUI;
     public GameObject creditsUI;
 
-    public GameObject pauseButton;
-
-    // Update is called once per frame
+    public GameObject controlXButton;
+    public GameObject creditXButton;
 
     void Start()
     {
@@ -31,8 +30,7 @@ public class Pause_Menu_UI : MonoBehaviour
             {
                 Pause();
             }
-        }
-        
+        }        
     }
 
 
@@ -40,28 +38,23 @@ public class Pause_Menu_UI : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         controlUI.SetActive(false);
+        creditsUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        pauseButton.SetActive(true);
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
     }
 
     public void Pause()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        pauseButton.SetActive(false);
     }
 
 
     
     public void LoadMenu()
     {
-        SceneManager.LoadScene("IntroScreen");
+        SceneManager.LoadScene("TitleScene");
         Time.timeScale = 1f;
     }
 
@@ -74,7 +67,7 @@ public class Pause_Menu_UI : MonoBehaviour
 
     public void LoadCredits()
     {
-        Debug.Log("Show Controls");
+        Debug.Log("Show Credits");
         pauseMenuUI.SetActive(false);
         creditsUI.SetActive(true);
     }
@@ -90,5 +83,16 @@ public class Pause_Menu_UI : MonoBehaviour
     {
         controlUI.SetActive(false);
         pauseMenuUI.SetActive(true);
+    }
+
+        public void ExitCredit()
+    {
+        creditsUI.SetActive(false);
+        pauseMenuUI.SetActive(true);
+    }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
