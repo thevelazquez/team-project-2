@@ -34,31 +34,35 @@ public class CameraControl : MonoBehaviour
 
     void Interact() {
         RaycastHit target;
-        Debug.DrawRay(transform.position, transform.forward*2, Color.white, 5f);
+
+        //Debug.DrawRay(transform.position, transform.forward*2, Color.white, 5f);
         if (Physics.Raycast(transform.position, transform.forward, out target, range)) {
             GameObject obj = target.transform.gameObject;
 
-            Debug.Log(obj.name);
+            //Debug.Log(obj.name);
             if (obj.tag == "pickup") {
+                //check if hitbox contains child game objects
                 if (obj.transform.childCount > 0)
                 {
-                    if (obj.transform.GetChild(0).name == "Gun")
-                    {
-                        Transform gun = obj.transform.GetChild(0).transform;
-                        gun.SetParent(transform);
-                        gun.localPosition = Vector3.zero;
-                        gun.localRotation = Quaternion.identity;
-                        gun.Translate(.4f, 0, .6f);
-                        gun.localRotation = Quaternion.Euler(-10f, 0, 0);
-                        Debug.Log("asd");
+                    switch (obj.transform.GetChild(0).name) {
+                        case "Gun":
+                            Transform gun = obj.transform.GetChild(0).transform;
+                            gun.SetParent(transform);
+                            gun.localPosition = Vector3.zero;
+                            gun.localRotation = Quaternion.identity;
+                            gun.Translate(.4f, 0, .6f);
+                            gun.localRotation = Quaternion.Euler(-10f, 0, 0);
+                            Debug.Log("Picked up gun");
+                            break;
+                        case "Key":
+                            Debug.Log("Picked up key");
+                            break;
                     }
-                }
-                else
-                {
-                    obj.transform.SetParent(player);
+                    obj.SetActive(false);
+                } else {
                     obj.SetActive(false);
                 }
-            }  else {
+            } else {
                 Debug.Log("Not a pickup");
             }
         } 
