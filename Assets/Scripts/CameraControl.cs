@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraControl : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class CameraControl : MonoBehaviour
     float yaw = 0.0f;
     float pitch = 0.0f;
     public float range = 10.0f;
-    // Start is called before the first frame update
+    
+    bool hasKey = false;
+    bool hasGoalKey = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -53,17 +57,39 @@ public class CameraControl : MonoBehaviour
                             gun.Translate(.4f, 0, .6f);
                             gun.localRotation = Quaternion.Euler(-10f, 0, 0);
                             Debug.Log("Picked up gun");
+                            obj.SetActive(false);
                             break;
                         case "Key":
-                            Debug.Log("Picked up key");
+                            Debug.Log("Picked up goal key");
+                            hasKey = true;
+                            obj.SetActive(false);
+                            break;
+                        case "doorlocked":
+                            if (hasKey) {
+                                obj.SetActive(false);
+                            }
+                            Debug.Log("You don't have the key");
+                            break;
+                        case "GoalKey":
+                            hasGoalKey = true;
+                            obj.SetActive(false);
+                            break;
+                        case "shutter":
+                            if (hasGoalKey) {
+                                obj.SetActive(false);
+                            }
                             break;
                     }
-                    obj.SetActive(false);
                 } else {
                     obj.SetActive(false);
                 }
             } else {
                 Debug.Log("Not a pickup");
+            }
+            if (obj.name == "Exit") {
+                SceneManager.LoadScene("WinScene");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         } 
     }
