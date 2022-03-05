@@ -8,11 +8,14 @@ public class CameraControl : MonoBehaviour
     public float speedH = 2.0f;
     public float speedV = 2.0f;
     public Transform player;
+    public GuardControl guard;
 
     float yaw = 0.0f;
     float pitch = 0.0f;
     public float range = 10.0f;
-    
+    public float gunRange = 30.0f;
+
+    int ammo = 0;
     bool hasKey = false;
     bool hasGoalKey = false;
 
@@ -33,6 +36,9 @@ public class CameraControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)) {
             Interact();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Cursor.lockState == CursorLockMode.Confined) {
+            Shoot();
         }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
@@ -59,6 +65,7 @@ public class CameraControl : MonoBehaviour
                             gun.localRotation = Quaternion.identity;
                             gun.Translate(.4f, 0, .6f);
                             gun.localRotation = Quaternion.Euler(-10f, 0, 0);
+                            ammo++;
                             Debug.Log("Picked up gun");
                             obj.SetActive(false);
                             break;
@@ -95,5 +102,35 @@ public class CameraControl : MonoBehaviour
                 SceneManager.LoadScene("WinScene");
             }
         } 
+    }
+
+    void Shoot()
+    {
+        RaycastHit target;
+
+        //Debug.DrawRay(transform.position, transform.forward*2, Color.white, 5f);
+        if (Physics.Raycast(transform.position, transform.forward, out target, gunRange))
+        {
+            GameObject obj = target.transform.gameObject;
+
+            if (obj.transform.gameObject.GetComponent(typeof(GuardControl)) != null)
+            {
+                if (player.Find("Main Camera/Gun") != null)
+                {
+                    if(ammo<=0)
+                    {
+                        Debug.Log("No ammo");
+                        return;
+                    }
+                    Debug.Log("Stunned");
+                    guard.Stun();
+                    ammo--;
+                }
+                else
+                {
+                    Debug.Log("Player doesn't have gun");
+                }
+            }
+        }
     }
 }

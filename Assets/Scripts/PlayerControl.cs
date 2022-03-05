@@ -29,6 +29,17 @@ public class PlayerControl : MonoBehaviour
         {
             if(other.gameObject.GetComponent(typeof(TriggerGuard)) != null)
             {
+                guard.SetTarget(null);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "zone")
+        {
+            if (other.gameObject.GetComponent(typeof(TriggerGuard)) != null)
+            {
                 guard.SetTarget(transform);
             }
         }
