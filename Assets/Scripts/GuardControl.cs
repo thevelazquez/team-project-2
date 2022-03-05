@@ -9,9 +9,7 @@ public class GuardControl : MonoBehaviour
     public float speed;
     public Transform target;
     public Transform[] patrolPoints;
-    public float timeStun = 10f;
     int pointsIndex;
-    float resetSpeed;
     NavMeshAgent agentGuard;
 
     // Start is called before the first frame update
@@ -28,10 +26,6 @@ public class GuardControl : MonoBehaviour
     void Update()
     {
         SetDestination();
-        if(resetSpeed < Time.time)
-        {
-            agentGuard.speed = speed;
-        }
     }
 
     public void SetTarget(Transform s)
@@ -64,7 +58,6 @@ public class GuardControl : MonoBehaviour
             }
         }
     }
-
     void OnTriggerEnter(Collider obj) {
         Debug.Log(obj.name);
         if (obj.name == "Player") {
@@ -72,11 +65,5 @@ public class GuardControl : MonoBehaviour
             Cursor.visible = true;
             SceneManager.LoadScene("LoseScene");
         }
-    }
-
-    public void Stun()
-    {
-        agentGuard.speed = 0;
-        resetSpeed = Time.time + timeStun;
     }
 }

@@ -719,10 +719,6 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[3]
       value: 
       objectReference: {fileID: 1004150480}
-    - target: {fileID: 1554069746, guid: 13493c3f5821c33469d53359dbe1611d, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 360
-      objectReference: {fileID: 0}
     - target: {fileID: 8105616010229007608, guid: 13493c3f5821c33469d53359dbe1611d, type: 3}
       propertyPath: m_Name
       value: Guard
@@ -1476,8 +1472,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102388077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.669, y: -0.31, z: -0.19}
-  m_LocalScale: {x: 3.8297546, y: 3.492832, z: 3.8870218}
+  m_LocalPosition: {x: 4.8, y: -0.31, z: -0.19}
+  m_LocalScale: {x: 0.1, y: 2.24, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -2668,10 +2664,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5888038407742559598, guid: fe7198ae1d80be7478920beec92cb07a, type: 3}
-      propertyPath: guard
-      value: 
-      objectReference: {fileID: 1554069743}
     - target: {fileID: 5888038408071853033, guid: fe7198ae1d80be7478920beec92cb07a, type: 3}
       propertyPath: m_RootOrder
       value: 5
