@@ -13,9 +13,14 @@ public class CameraControl : MonoBehaviour
     float pitch = 0.0f;
     public float range = 10.0f;
     public float gunRange = 30.0f;
+    public AudioClip shoot;
+    public AudioClip doorOpen;
+    public AudioClip shutterOpen;
+    public AudioClip collectItem;
     int ammo = 0;
     bool hasKey = false;
     bool hasGoalKey = false;
+    public AudioSource audio;
 
     void Start()
     {
@@ -66,20 +71,24 @@ public class CameraControl : MonoBehaviour
                             gun.localRotation = Quaternion.Euler(-10f, 0, 0);
                             Debug.Log("Picked up gun");
                             obj.SetActive(false);
+                            audio.PlayOneShot(collectItem);
                             ammo++;
                             break;
                         case "Key":
                             hasKey = true;
                             obj.SetActive(false);
+                            audio.PlayOneShot(collectItem);
                             break;
                         case "Adrenaline":
                             Debug.Log("Sped up");
                             player.GetComponent<PlayerControl>().Speed();
                             obj.SetActive(false);
+                            audio.PlayOneShot(collectItem);
                             break;
                         case "doorlocked":
                             if (hasKey) {
                                 obj.SetActive(false);
+                                audio.PlayOneShot(doorOpen);
                             }
                             Debug.Log("You don't have the key");
                             break;
@@ -87,15 +96,18 @@ public class CameraControl : MonoBehaviour
                             Debug.Log("Picked up goal key");
                             hasGoalKey = true;
                             obj.SetActive(false);
+                            audio.PlayOneShot(collectItem);
                             break;
                         case "shutter":
                             if (hasGoalKey) {
                                 obj.SetActive(false);
+                                audio.PlayOneShot(shutterOpen);
                             }
                             break;
                     }
                 } else {
                     obj.SetActive(false);
+                    audio.PlayOneShot(doorOpen);
                 }
             } else {
                 Debug.Log("Not a pickup");
@@ -129,6 +141,7 @@ public class CameraControl : MonoBehaviour
                     Debug.Log("Stunned");
                     guard.Stun();
                     ammo--;
+                    audio.PlayOneShot(shoot);
                 }
                 else
                 {
