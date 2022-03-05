@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GuardControl : MonoBehaviour
 {
@@ -55,6 +56,14 @@ public class GuardControl : MonoBehaviour
             {
                 GoToNext();
             }
+        }
+    }
+    void OnTriggerEnter(Collider obj) {
+        Debug.Log(obj.name);
+        if (obj.name == "Player") {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("LoseScene");
         }
     }
 }

@@ -34,6 +34,9 @@ public class CameraControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             Interact();
         }
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+        }
     }
 
     void Interact() {
@@ -87,9 +90,9 @@ public class CameraControl : MonoBehaviour
                 Debug.Log("Not a pickup");
             }
             if (obj.name == "Exit") {
-                SceneManager.LoadScene("WinScene");
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                SceneManager.LoadScene("WinScene");
             }
         } 
     }
