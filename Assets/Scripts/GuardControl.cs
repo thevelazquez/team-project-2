@@ -12,11 +12,13 @@ public class GuardControl : MonoBehaviour
     public float timeStun = 10f;
     int pointsIndex;
     float resetSpeed;
+    Animator anim;
     NavMeshAgent agentGuard;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         agentGuard = this.GetComponent<NavMeshAgent>();
         agentGuard.autoBraking = false;
 
@@ -31,6 +33,7 @@ public class GuardControl : MonoBehaviour
         if (resetSpeed < Time.time)
         {
             agentGuard.speed = speed;
+            anim.enabled = true;
         }
     }
 
@@ -78,5 +81,6 @@ public class GuardControl : MonoBehaviour
     {
         agentGuard.speed = 0;
         resetSpeed = Time.time + timeStun;
+        anim.enabled = false;
     }
 }
