@@ -69,7 +69,6 @@ public class CameraControl : MonoBehaviour
                             ammo++;
                             break;
                         case "Key":
-                            Debug.Log("Picked up goal key");
                             hasKey = true;
                             obj.SetActive(false);
                             break;
@@ -85,6 +84,7 @@ public class CameraControl : MonoBehaviour
                             Debug.Log("You don't have the key");
                             break;
                         case "GoalKey":
+                            Debug.Log("Picked up goal key");
                             hasGoalKey = true;
                             obj.SetActive(false);
                             break;
