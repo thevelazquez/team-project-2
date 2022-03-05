@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float speed = 10f;
+    public float defaultSpeed = 4f;
+    public float boostSpeed = 6f;
     public GuardControl guard;
+    public float timeSped = 5f;
+    float resetSpeed;
+    float playerSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerSpeed = defaultSpeed;
     }
 
     // Update is called once per frame
@@ -20,7 +24,11 @@ public class PlayerControl : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        GetComponent<CharacterController>().Move(move * speed * Time.deltaTime);
+        GetComponent<CharacterController>().Move(move * playerSpeed * Time.deltaTime);
+        if (resetSpeed < Time.time)
+        {
+            playerSpeed = defaultSpeed;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,5 +51,11 @@ public class PlayerControl : MonoBehaviour
                 guard.SetTarget(transform);
             }
         }
+    }
+
+    public void Speed()
+    {
+        resetSpeed = Time.time + timeSped;
+        playerSpeed = boostSpeed;
     }
 }

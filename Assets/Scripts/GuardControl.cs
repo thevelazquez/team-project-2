@@ -9,7 +9,7 @@ public class GuardControl : MonoBehaviour
     public float speed;
     public Transform target;
     public Transform[] patrolPoints;
-    public float timeStun = 10f;
+    public float timeStun = 5f;
     int pointsIndex;
     float resetSpeed;
     Animator anim;

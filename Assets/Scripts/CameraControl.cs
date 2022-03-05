@@ -7,7 +7,7 @@ public class CameraControl : MonoBehaviour
 {
     public float speedH = 2.0f;
     public float speedV = 2.0f;
-    public Transform player;
+    public GameObject player;
     public GuardControl guard;
     float yaw = 0.0f;
     float pitch = 0.0f;
@@ -29,7 +29,7 @@ public class CameraControl : MonoBehaviour
         yaw += speedH * Input.GetAxis("Mouse X");
         pitch -= speedV * Input.GetAxis("Mouse Y");
         pitch = Mathf.Clamp(pitch, -90f, 90f);
-        player.Rotate(Vector3.up * speedH * Input.GetAxis("Mouse X"));
+        player.transform.Rotate(Vector3.up * speedH * Input.GetAxis("Mouse X"));
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
         if (Input.GetKeyDown(KeyCode.E)) {
@@ -73,6 +73,11 @@ public class CameraControl : MonoBehaviour
                             hasKey = true;
                             obj.SetActive(false);
                             break;
+                        case "Adrenaline":
+                            Debug.Log("Sped up");
+                            player.GetComponent<PlayerControl>().Speed();
+                            obj.SetActive(false);
+                            break;
                         case "doorlocked":
                             if (hasKey) {
                                 obj.SetActive(false);
@@ -114,7 +119,7 @@ public class CameraControl : MonoBehaviour
 
             if (obj.transform.gameObject.GetComponent(typeof(GuardControl)) != null)
             {
-                if (player.Find("Main Camera/Gun") != null)
+                if (player.transform.Find("Main Camera/Gun") != null)
                 {
                     if (ammo <= 0)
                     {
