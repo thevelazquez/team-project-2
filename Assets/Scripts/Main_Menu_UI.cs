@@ -17,6 +17,13 @@ public class Main_Menu_UI : MonoBehaviour
         aboutCreditUI.SetActive(false);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+        }
+    }
+
     public void LoadAboutControl()
     {
         Debug.Log("Loading Controls");
