@@ -4695,6 +4695,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5888038407742559584, guid: fe7198ae1d80be7478920beec92cb07a, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5888038407742559598, guid: fe7198ae1d80be7478920beec92cb07a, type: 3}
       propertyPath: audio
       value: 
