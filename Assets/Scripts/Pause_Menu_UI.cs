@@ -13,6 +13,7 @@ public class Pause_Menu_UI : MonoBehaviour
 
     public GameObject controlXButton;
     public GameObject creditXButton;
+    public GameObject crosshair;
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class Pause_Menu_UI : MonoBehaviour
         pauseMenuUI.SetActive(false);
         controlUI.SetActive(false);
         creditsUI.SetActive(false);
+        crosshair.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
         Cursor.lockState = CursorLockMode.Confined;
@@ -49,6 +51,7 @@ public class Pause_Menu_UI : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        crosshair.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
